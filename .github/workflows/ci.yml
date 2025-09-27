@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+  pull_request:
+    branches:
+      - dev
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Print Node version (optional)
+      - name: Check environment
+        run: |
+          echo "Running CI for DevOps Project 4"
+          uname -a
+          node --version || echo "Node.js not installed"
+
+      # Step 3: Run a sample CI task
+      - name: Run simple test
+        run: echo "✅ CI workflow is working!"
